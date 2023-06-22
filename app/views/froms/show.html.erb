@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @from %>
+
+<div>
+  <%= link_to "Edit this from", edit_from_path(@from) %> |
+  <%= link_to "Back to froms", froms_path %>
+
+  <%= button_to "Destroy this from", @from, method: :delete %>
+</div>

@@ -1,0 +1,106 @@
+<div class=" bg-danger text-white text-center">
+<h1>FOOD DEMO</h1>
+</div>
+
+<div class="row">
+  <%= form_with(model: from) do |form| %>
+    <% if from.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(from.errors.count, "error") %> prohibited this from from being saved:</h2>
+
+         <ul>
+          <% from.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+         <% end %>
+       </ul>
+     </div>
+  <% end %>
+
+   <div class="row m-3">
+     <div class="col-6">
+        <%= form.label :first_name, class: 'text-danger mb-2' %>  
+        <%= form.text_field :first_name, class: ' form-control' %>  
+     </div>
+
+     <div class="col-6">
+         <%= form.label :last_name, class: 'text-danger mb-2' %>  
+         <%= form.text_field :last_name, class: ' form-control' %>  
+     </div>
+  </div>
+
+  <div class="row m-3">
+     <div class= "col-3">
+        <%= form.label :Date, class: 'text-danger mb-2' %>  
+        <%= form.date_field :date, class: ' form-control' %>  
+     </div>
+  </div>
+
+  <div class="row m-3">
+     <div class="col-2">
+        <%= form.label :Gender, class: 'text-danger mb-2' %>  
+           <input type="radio" id="male" name="Gender" value="1" />
+                  <label for="Gender">Male</label>
+           <input type="radio" id="Female" name="Gender" value="2" />
+                  <label for="Gender">Female</label>
+       </div> 
+  </div>
+
+  <div class="row m-3">
+      <div class="col-2">
+           <%= form.label :category, class: 'text-danger mb-2' %>  
+               <input type="radio" id="veg" name="veg" value="1" />
+                     <label for="veg">veg</label>
+               <input type="radio" id="non-veg" name="non-veg" value="2" />
+                      <label for="non-veg">non-veg</label>
+     </div>
+
+       <div class="col-2">
+            <%= form.label :meal, class: 'text-danger mb-2' %> 
+                   <input type="radio" id="brack-fast" name="brack-fast" value="1" />
+                           <label for="brack-fast">brack-fast</label>
+                  <input type="radio" id="lunch" name="lunch" value="2" />
+                           <label for="lunch">lunch</label>
+                   <input type="radio" id="diner" name="diner" value="3" />
+                           <label for="diner">diner</label>           
+     </div>
+  </div>
+
+    <div class="m-4">
+          <%= form.label :adderss, class: 'text-danger mb-2' %>  
+         <%= form.text_field :adderss, class: ' form-control' %>  
+   </div>
+
+      <div class="row m-3">
+          <div class="col-lg-4">
+              <%= form.label :phone_number, class: 'text-danger mb-2' %>  
+              <%= form.text_field :phone_number,class: ' form-control' %> 
+           </div>
+       </div>
+
+      <div class="row m-3">
+          <div class="col-lg-4">
+               <%= form.label :state, class: 'text-danger mb-2' %>  
+               <%= form.select :city, ["surat","amreli","rajkot","bardoli","bhavnagar"] %> 
+           </div>
+       </div>
+
+      <div class="row m-3">
+           <div class="col-lg-4">
+                <%= form.label :country, class: 'text-danger mb-2' %>  
+               <%= form.select :city, ["india"] %> 
+            </div>
+       </div>
+
+      <div class="row m-3">
+            <div class="col-lg-4">
+                  <%= form.label :pin_code, class: 'text-danger mb-2' %>  
+                 <%= form.text_field :pin_code,class: ' form-control' %> 
+             </div>
+       </div>
+
+      <div>
+        <%= form.submit class:"btn btn-success btn-lg m-4" %>
+      </div>
+   <% end %>
+</div> 
+</div>
