@@ -1,7 +1,5 @@
-class FoodsController < ApplicationController
-  before_action :set_food, only: %i[ show edit update destroy ]
-
-    def index
-        @foods = Food.all 
-    end
+class FoodsController < ApplicationController 
+  def index
+    @pagy, @foods  = pagy(Food.order(created_at: :desc), items: 9)
+  end
 end

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :orders
     has_many :carts
+
     validates :name,:city,:state,:country, presence: true
     validates :email, uniqueness: true
     validates :zipcode, length: { is: 6 }
