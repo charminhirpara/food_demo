@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Uses::ConfirmationsController < Devise::ConfirmationsController
+class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
   # def new
   #   super
@@ -18,12 +18,12 @@ class Uses::ConfirmationsController < Devise::ConfirmationsController
 
   # protected
 
-  # The path used after resending confirmation instructions.
+  # The path usered after resending confirmation instructions.
   # def after_resending_confirmation_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
 
-  # The path used after confirmation.
+  # The path usered after confirmation.
   # def after_confirmation_path_for(resource_name, resource)
   #   super(resource_name, resource)
   # end

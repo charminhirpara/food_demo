@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController 
     
-    def index  
-     
+    def create
+      
     end
     
    

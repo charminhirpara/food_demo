@@ -111,7 +111,9 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                         <div class="col-lg-12">
                             <div class="main-button">
                                 <div class="float-left">
-                                    <a href="#">Back</a>
+                                 
+                                    <%= link_to "Back", carts_path%>
+                                    
                                 </div>
 
                                 <div class="float-right">
@@ -127,42 +129,7 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
         </div>
 
         <div class="col-md-4">
-            <ul class="list-group list-group-no-border">
-                <li class="list-group-item" style="margin:0 0 -1px">
-                    <div class="row">
-                        <div class="col-6">
-                            <strong>Sub-total</strong>
-                        </div>
-
-                        <div class="col-6">
-                            <h5 class="text-right"> 128.00</h5>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="list-group-item" style="margin:0 0 -1px">
-                    <div class="row">
-                        <div class="col-6">
-                            <strong>Extra</strong>
-                        </div>
-
-                        <div class="col-6">
-                            <h5 class="text-right">0.00</h5>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="list-group-item" style="margin:0 0 -1px">
-                    <div class="row">
-                        <div class="col-6">
-                            <strong>Tax</strong>
-                        </div>
-
-                        <div class="col-6">
-                            <h5 class="text-right"> 10.00</h5>
-                        </div>
-                    </div>
-                </li>
+          
 
                 <li class="list-group-item" style="margin:0 0 -1px">
                     <div class="row">
@@ -179,11 +146,11 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                 <li class="list-group-item" style="margin:0 0 -1px">
                     <div class="row">
                         <div class="col-6">
-                            <strong>Deposit</strong>
+                            <strong>Sub-Total</strong>
                         </div>
 
                         <div class="col-6">
-                            <h5 class="text-right">10.00</h5>
+                            <h5 class="text-right">138.00</h5>
                         </div>
                     </div>
                 </li>

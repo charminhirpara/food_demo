@@ -39,9 +39,14 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
                     <h2>Our <em>Foods</em></h2>
-                    <form action="<%= foods_path %>">
-                    <div class="theme-search-field-container" data-search="zptheme-search-container" style="display: block;"><form method="get" action="/search-products"><input type="text" name="q" placeholder="Search" data-search-input="zptheme-search-input" data-zs-search-input=""><input type="submit" name="" class="theme-search-go" value="Go" data-zs-search=""><div class="theme-search-loader-dots" data-theme-search-loader-dots=""><span></span></div>
-                    </form></div>
+                    <form class="form-inline my-2 my-lg-0" action="/foods">
+                    <div class="">
+                      <input class="form-control mr-sm-2" name="name" type="text" placeholder="search" aria-label="Search">
+                    </div>
+                    <div class="col-lg-1">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> Search</button>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>

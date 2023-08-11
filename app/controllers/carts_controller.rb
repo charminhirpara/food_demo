@@ -1,9 +1,8 @@
 class CartsController < ApplicationController 
-    
-    def index  
-
-    end
-    
+    before_action :authenticate_user!,only: :index
+    def show
+        @cart = current_cart
+       end
    
     
 end

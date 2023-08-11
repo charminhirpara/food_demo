@@ -1,4 +1,4 @@
-en:
+gu:
   devise:
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
@@ -61,3 +61,9 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  store:
+    title: "My Store"
+  menu:
+  home: "گھر"
+  food: "کھانا"
+  checkout: "اس کو دیکھو"

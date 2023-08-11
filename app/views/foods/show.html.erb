@@ -1,0 +1,67 @@
+<section class="section section-bg" id="call-to-action"
+
+    style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="cta-content">
+            <br>
+            <br>
+            <h2><sup>Food details</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ***** Call to Action End ***** -->
+<section class="section">
+   <div class="container"> 
+        <br>
+        <br>
+
+       <div class="row">
+                <div class="col-md-8">
+                   <% @food.images.each do |img| %>
+                       <%= image_tag  img , size: "100x500"%>
+                   <%end%>
+               </div>
+               <br>
+                  <div class="col-md-4">
+                        <div class="contact-form">
+                            <form action="#" id="contact">
+                                <heding><b>Name</b></heding>
+                            <BR>
+                                <%=@food.name%>
+                                <div class="form-group">
+                                    <br>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi ratione molestias maxime odio!
+                                    </p>
+                                </div>     
+                        
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <label><b>Quantity</b></label>
+                                    <input type="text" placeholder="1">
+                                    <label><b>Mrp</b></label>    
+                                    <%=@food.mrp%>  
+                                    <label><b>Discount</b></label>    
+                                    <%=@food.discount%> 
+                                    <label><b>Price</b></label>    
+                                    <%=@food.price%>
+                                </div>
+                                </div>
+
+                                <div class="main-button"><br>
+                                    <li><%= link_to "add to cart", carts_path %></li>
+                                </div>
+                            </form>
+                        </div>
+
+                           <br>
+                        
+                 </div>
+      </div>   
+   </div>
+</section>

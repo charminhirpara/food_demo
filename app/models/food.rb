@@ -19,4 +19,12 @@ class Food < ApplicationRecord
   def call_job
     ExampleJob.perform_later(a: 10, b: 20)
   end
+  
+  def locale
+    if params[:locale].present?
+      session[:mylocale] =  params[:locale]
+  end
+     redirect_to root_path
+  end
+
 end

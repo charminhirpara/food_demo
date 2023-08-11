@@ -18,29 +18,34 @@
 
 <!-- ***** Fleet Starts ***** -->
 
+<div  aria-label="button group" data-baseweb="button-group" role="group" >
+    
+    
+     <button data-baseweb="button" type="button" data-term-id="79" tabindex="0" class=" mt-5">submit</button>
+</div>
 <section class="section" id="trainers">
     <div class="container">
         <br>
         <br>
-
+       
         <div class="row">
             <% @foods.each do |food|%>
                 <div class="col-lg-4">
                     <div class="trainer-item">
-                        <div class="image-thumb">
-                        <% food.images.each do |img| %>
-                            <%= image_tag  img , size: "50x300"%>
+                    <div class="image-thumb">
+                        <%= link_to food do %>
+                            <% food.images.each do |img| %>
+                                <%= image_tag  img , size: "50x300"%>
+                            <%end%>
                         <%end%>
 
-                        </div>
+                    </div>
                         <div class="down-content">
                             <h2><%= food.description%></h2>
                             <h2>₹<%= food.price %></h2>
                             <ul class="social-icons">
                                 <div class="main-button">
-                                    <li><%= link_to "checkout", checkouts_path %></li>
-                                    <li><%= link_to "+ Order", carts_path %></li>
-                                </div>
+                                 
                             </ul>
                         </div>
                     </div>
@@ -51,6 +56,7 @@
         <br>
         
         <h2><%==pagy_nav(@pagy)%></h2>
-    </div>
+  
 </section>
 <!-- ***** Fleet Ends ***** -->
+                      
