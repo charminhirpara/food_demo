@@ -17,46 +17,48 @@
 <!-- ***** Call to Action End ***** -->
 
 <!-- ***** Fleet Starts ***** -->
-
-<div  aria-label="button group" data-baseweb="button-group" role="group" >
-    
-    
-     <button data-baseweb="button" type="button" data-term-id="79" tabindex="0" class=" mt-5">submit</button>
+<div class=" mt-5 pt-5">
+    <form action >
+        <h2>Categories</h2>
+        <input type="checkbox" id="brack-fast" name="brack-fast" value="brack-fast">
+        <label for="brack-fast"> brack-fast</label>
+        <input type="checkbox" id="lunch" name="lunch" value="lunch">
+        <label for="lunch">  lunch</label>
+        <input type="checkbox" id="diner" name="diner" value="diner">
+        <label for="diner"> diner</label><br>
+        <input type="submit" value="Submit">
+   </form>
 </div>
+
 <section class="section" id="trainers">
-    <div class="container">
+  <div class="container">
         <br>
         <br>
        
         <div class="row">
             <% @foods.each do |food|%>
                 <div class="col-lg-4">
+                <div class="image-thumb">
                     <div class="trainer-item">
-                    <div class="image-thumb">
                         <%= link_to food do %>
                             <% food.images.each do |img| %>
                                 <%= image_tag  img , size: "50x300"%>
                             <%end%>
-                        <%end%>
-
-                    </div>
-                        <div class="down-content">
-                            <h2><%= food.description%></h2>
-                            <h2>₹<%= food.price %></h2>
-                            <ul class="social-icons">
-                                <div class="main-button">
-                                 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                     <%end%>
+                         <div class="down-content">
+                             <h2><%= food.description%></h2>
+                             <h2>₹<%= food.price %></h2>
+                         </div>
+                  </div>     
+             </div>
+      </div>
             <% end%>
         </div>
 
         <br>
         
         <h2><%==pagy_nav(@pagy)%></h2>
-  
+  </div>
 </section>
 <!-- ***** Fleet Ends ***** -->
                       
