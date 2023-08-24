@@ -16,67 +16,73 @@
   <!-- ***** Call to Action End ***** -->
 
   <!-- ***** Fleet Starts ***** -->
-<body>
   <main>
-    <div class="basket">
-      <div class="basket-module">
-        <label for="promo-code">Enter a promotional code</label>
-        <input id="promo-code" type="text" name="promo-code" maxlength="5" class="promo-code-field">
-        <button class="promo-code-cta">Apply</button>
-      </div>
-      <div class="basket-labels">
-        <ul>
-          <li class="item item-heading">Item</li>
-          <li class="price">Price</li>
-          <li class="quantity">Quantity</li>
-          <li class="subtotal">Subtotal</li>
-        </ul>
-      </div>
-      <div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <%= image_tag '120x166.png' %> 
-                    </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity"></span> </strong> </h1>
-          
-          </div>
-        </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <input type="number" value="4" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">104.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>
-      <div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-          <%= image_tag '120x166.png' %> 
-          </div>
-          <div class="product-details">
-            <h1><strong><span class="item-quantity">1</span> x Whistles</strong> Amella Lace Midi Dress</h1>
-        
-          </div>
-        </div>
-        <div class="price">26.00</div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
-        </div>
-        <div class="subtotal">26.00</div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>
-    </div>
-    <aside>
+  <div class="container">
+  <div class="row">
+  <div class="col-9">
+  
+  <div class="table-responsive cart_info">
+      <table class="table table-condensed">
+          <thead>
+              <tr class="cart_menu">
+              <td class="image">Food</td>
+                  <td class="description">Description</td>
+                  <td class="price">Price</td>
+                  <td class="quantity">Quantity</td>
+                  <td class="total">Total</td>
+                  <td></td>
+              </tr>
+          </thead> 
+
+          <tbody>
+           <% total_sum=0 %>
+            <% @carts.each  do |cart| %>
+              <tr>
+                  <td class="cart_product">
+                      <% cart.food.images.each do |img| %>
+                          <%= image_tag img, size: "50x50" %>
+                      <% end %>
+                  </td>
+                  <td class="cart_description">
+                      <h4><a href=""><%=cart.food.name %></a></h4>
+                  </td>
+                  <td class="cart_price">
+                      <p>Rs.<%=cart.food.price %></p>
+                  </td>
+                  <td class="cart_quantity">
+                      <div class="cart_quantity_button">
+                          <%# <a class="cart_quantity_up" href="">  </a> %>
+        <%= link_to "+", increse_qty_path(id: cart.id, qty: cart.quantity+1)%>
+                          <input class="cart_quantity_input" type="text" name="quantity" value="<%=cart.quantity %>" autocomplete="off" size="2">
+                          <%# <a class="cart_quantity_down" href=""> - </a> %>
+          <%= link_to "-", increse_qty_path(id: cart.id, qty: cart.quantity-1)%>
+                      </div>
+                  </td>
+    <td class="cart_total">
+      <% qty=cart.food.price * cart.quantity%>
+      <% total_sum += qty%>
+                      <p class="cart_total_price">Rs.<%=qty%></p>
+                  </td>
+                  <td class="cart_delete">
+                    <%= link_to ' X ', remove_item_path(cart),
+                          :confirm => 'Are you sure?', :method => :delete %>
+                      <%# <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a> %>
+                  </td>
+              </tr>
+            <%end%>
+          </tbody>
+      </table>
+  </div>
+  </div>
+  </div>
+</div>
+       <aside>
+      
+      
       <div class="summary">
-        <div class="summary-total-items"><span class="total-items"></span> Items in your Bag</div>
         <div class="summary-subtotal">
           <div class="subtotal-title">Subtotal</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <p>Rs.<%= total_sum%></p>
           <div class="summary-promo hide">
             <div class="promo-title">Promotion</div>
             <div class="promo-value final-value" id="basket-promo"></div>
@@ -84,21 +90,19 @@
         </div>
         <div class="summary-delivery">
           <select name="delivery-collection" class="summary-delivery-selection">
-            <option value="0" selected="selected">Select Collection or Delivery</option>
-            <option value="signed-for">Royal  Special Delivery</option>
+            <option value="signed-for">COD</option>
           </select>
         </div>
         <div class="summary-total">
           <div class="total-title">Total</div>
-          <div class="total-value final-value" id="basket-total">130.00</div>
+          <p><%= total_sum%></p> 
         </div>
         <div class="summary-checkout">
-     <li><%= link_to "checkout", checkouts_path %></li>
-
+          <li><%= link_to "checkout", checkouts_path %></li>
         </div>
       </div>
     </aside>
   </main>
-</body>
+
 
   <!-- ***** Fleet Ends ***** -->

@@ -8,7 +8,6 @@
                     <br>
                     <br>
                     <h2>Our <em>Food</em></h2>
-                    <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
                 </div>
             </div>
         </div>
@@ -19,15 +18,24 @@
 <!-- ***** Fleet Starts ***** -->
 <div class=" mt-5 pt-5">
     <form action >
+    <%= form_with url: foods_path, method:"get" do |form| %>    
+        <input type="hidden" name="key" value="<%= params[:key] %>">
+          <select name="sort">
+            <option value="created_at">New Items</option>
+            <option value="price desc">High to Low</option>
+            <option value="price asc">Low to High</option>
+        </select>
         <h2>Categories</h2>
         <input type="checkbox" id="brack-fast" name="brack-fast" value="brack-fast">
         <label for="brack-fast"> brack-fast</label>
         <input type="checkbox" id="lunch" name="lunch" value="lunch">
         <label for="lunch">  lunch</label>
-        <input type="checkbox" id="diner" name="diner" value="diner">
-        <label for="diner"> diner</label><br>
+        <input type="checkbox" id="dinner" name="dinner" value="dinner">
+        <label for="diner"> dinner</label><br>
         <input type="submit" value="Submit">
+        <%end%>
    </form>
+   
 </div>
 
 <section class="section" id="trainers">
@@ -49,6 +57,17 @@
                              <h2><%= food.description%></h2>
                              <h2>₹<%= food.price %></h2>
                          </div>
+                         <ul class="social-icons">
+                         <div class="main-button">
+                           
+                             <%= form_with url: carts_path, method: 'post' do |form| %>
+                                <input type="hidden" name="food_id" value="<%= food.id %>">
+                                <button type="submit" class="btn btn-fefault cart">
+                                    <i class="food-cart"></i> Add to cart
+                                </button>
+                            <% end %>
+                         </div>
+                         
                   </div>     
              </div>
       </div>

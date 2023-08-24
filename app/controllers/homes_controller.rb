@@ -1,6 +1,7 @@
 class HomesController < ApplicationController 
     
    
+
  
     def locales
       if params[:locale].present?
