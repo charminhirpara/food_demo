@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ActiveAdmin.register Food do
 
 #   # See permitted parameters documentation:
@@ -14,7 +16,7 @@
 #   #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   #   permitted
 #   # end
-  
+
 # end
 ActiveAdmin.register Food do
   permit_params :name, :description, :category_id, :mrp, :discount, :price, images: []
@@ -28,7 +30,6 @@ ActiveAdmin.register Food do
     column :mrp
     column :discount
     column :price
- 
 
     actions
   end
@@ -39,13 +40,11 @@ ActiveAdmin.register Food do
   filter :mrp
   filter :discount
   filter :price
-  
-
 
   form do |f|
     f.inputs do
       f.input :name
-      f.input :images, as: :file, input_html: { multiple: true}
+      f.input :images, as: :file, input_html: { multiple: true }
       f.input :description
       f.input :category_id
       f.input :mrp
@@ -54,5 +53,4 @@ ActiveAdmin.register Food do
     end
     f.actions
   end
-
 end

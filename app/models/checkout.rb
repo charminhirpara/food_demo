@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 class Checkout < ApplicationRecord
-    belongs_to :cart
-    belongs_to :product
- 
-    def subtotal
-       product.price * quantity
-    end
-  
+  belongs_to :cart
+  belongs_to :product
+
+  def subtotal
+    product.price * quantity
   end
-  
+end

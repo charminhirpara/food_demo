@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExampleJob < ActiveJob::Base
   # Set the Queue as Default
   queue_as :default

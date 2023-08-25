@@ -1,13 +1,8 @@
-class HomesController < ApplicationController 
-    
-   
+# frozen_string_literal: true
 
- 
-    def locales
-      if params[:locale].present?
-          session[:mylocale] =  params[:locale]
-      end
-      redirect_to root_path
-     end
-  
+class HomesController < ApplicationController
+  def locales
+    session[:mylocale] = params[:locale] if params[:locale].present?
+    redirect_to root_path
+  end
 end

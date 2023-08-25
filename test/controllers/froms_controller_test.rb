@@ -1,45 +1,47 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class FromsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @from = froms(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get froms_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_from_url
     assert_response :success
   end
 
-  test "should create from" do
-    assert_difference("From.count") do
-      post froms_url, params: { from: {  } }
+  test 'should create from' do
+    assert_difference('From.count') do
+      post froms_url, params: { from: {} }
     end
 
     assert_redirected_to from_url(From.last)
   end
 
-  test "should show from" do
+  test 'should show from' do
     get from_url(@from)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_from_url(@from)
     assert_response :success
   end
 
-  test "should update from" do
-    patch from_url(@from), params: { from: {  } }
+  test 'should update from' do
+    patch from_url(@from), params: { from: {} }
     assert_redirected_to from_url(@from)
   end
 
-  test "should destroy from" do
-    assert_difference("From.count", -1) do
+  test 'should destroy from' do
+    assert_difference('From.count', -1) do
       delete from_url(@from)
     end
 
