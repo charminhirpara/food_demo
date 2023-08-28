@@ -2,9 +2,7 @@
 
 class Order < ApplicationRecord
   belongs_to :user
-
-  validates :email, uniqueness: true
-  validates :user, :city, :sub_total, :discounnt, :total, presence: true
-  validates :phone_number, length: { is: 10 }, numericality: true
-  validates :address, length: { is: 150 }, numericality: true
-end
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "city", "created_at", "discounnt", "email", "id", "phone_number", "sub_total", "total", "updated_at", "user_id"]
+  end
+  end
