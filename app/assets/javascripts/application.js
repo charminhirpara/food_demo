@@ -11,4 +11,3 @@
 //= require 'mixitup'
 //= require 'accordions'
 //= require 'custom'
-//= require 'carts'
