@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   
   resources :foods
   resources :order_foods 
-  resources :orders
   
   post '/carts', to: 'carts#create', as: :add_item
   get '/carts', to: 'carts#index'

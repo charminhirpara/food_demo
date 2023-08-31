@@ -16,70 +16,71 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
 
 <section class="section">
 <div class="container">
+<%= form_with url: orders_path, method: 'post' do |form| %>
     <br>
     <br>
     <div class="row">
         <div class="col-md-8">
             <div class="contact-form">
-                <form id="contact" action="" method="post">
+             
                     <div class="row">
                     
                         <div class="col-sm-6 col-xs-12">
                         <label>First Name </label>
-                        <input type="text" placeholder="First Name *" value="<%= current_user.first_name %>">
+                        <input type="text" name="first_name" placeholder="First Name *" value="<%= current_user.first_name %>">
                         </div>
                         <div class="col-sm-6 col-xs-12">
                         <label>Middle Name</label>
-                        <input type="text" placeholder="Middle Name *" value="<%= current_user.middle_name %>">
+                        <input type="text" name="middle_name" placeholder="Middle Name *" value="<%= current_user.middle_name %>">
                         </div>
                     </div>
                     <div class="row">
                        
                         <div class="col-sm-12 col-xs-12">
                         <label>Surname</label>
-                        <input type="text" placeholder="Surname *" value="<%= current_user.last_name %>">
+                        <input type="text"  name="surname" placeholder="Surname *" value="<%= current_user.last_name %>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
                         <label>Address</label>
-                        <input type="text" placeholder="Address *" value="<%= current_user.address%>">
+                        <input type="text" name="address" placeholder="Address *" value="<%= current_user.address%>">
                         </div>
                         
                     </div>
                     <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                    <label>Email</label>
-                    <input type="text" placeholder="Email *" value="<%= current_user.email %>">
+                       <div class="col-sm-12 col-xs-12">
+                         <label>Email</label>
+                         <input type="text" name="email" placeholder="Email *" value="<%= current_user.email %>">
+                      </div>
                     </div>
                     
-                    
-                </div>
+               
                     <div class="row">
                         <div class="col-sm-6 col-xs-12">
                         <label>City</label>
-                        <input type="text" placeholder="City *" value="<%= current_user.city%>">
+                        <input type="text"name="city" placeholder="City *" value="<%= current_user.city%>">
                         </div>
                         <div class="col-sm-6 col-xs-12">
                         <label>State</label>
-                        <input type="text" placeholder="State *" value="<%= current_user.state%>">
+                        <input type="text" name="state" placeholder="State *" value="<%= current_user.state%>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-xs-12">
                         <label>Phone No</label>
-                        <input type="text" placeholder="Phone No *" value="<%= current_user.phone_no %>">
+                        <input type="text"name="phone_no" placeholder="Phone No *" value="<%= current_user.phone_no %>">
                         </div>
                         <div class="col-sm-6 col-xs-12">
                         <label>Country</label>
-                        <input type="text" placeholder="Country *" value="<%= current_user.country%>">
+                        <input type="text" name="country"placeholder="Country *" value="<%= current_user.country%>">
                         </div>
                     </div>
 
                     <div class="row">
                     <div class="col-sm-6 col-xs-12">
                     <label>Pin Code</label>
-                         <input type="text" placeholder="Pin Code *" value="<%= current_user.pin_code%>">
+                         <input type="text" name="pin_code" placeholder="Pin Code *" value="<%= current_user.pin_code%>">
                     </div>
                     <div class="col-sm-6 col-xs-12">
                     <label>Payment method</label>
@@ -91,7 +92,7 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                         <option value="paypal">PayPal</option>
                     </select>
                     </div>
-                </div>
+                 </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="main-button">
@@ -104,7 +105,7 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                             </div>
                         </div>
                     </div>
-                </form>
+            
             </div>
 
             <br>
@@ -118,10 +119,8 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
           total_sum += qty
         end
       %>
-          
-
-                <li class="list-group-item" style="margin:0 0 -1px">
-                    <div class="row">
+     <li class="list-group-item" style="margin:0 0 -1px">
+          <div class="row">
                         <div class="col-6">
                             <h4><strong>Total</strong></h4>
                         </div>
@@ -142,11 +141,10 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                             <h5 class="text-right">Rs.<%= total_sum%></h5>
                         </div>
                     </div>
-                </li>
-            </ul>
-
+     </li>
             <br>
         </div>
     </div>
-</div>
+  <% end %>
+    </div>
 </section>

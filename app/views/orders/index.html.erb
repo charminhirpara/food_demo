@@ -7,7 +7,7 @@
                 <div class="cta-content">
                     <br>
                     <br>
-                    <h2>Our <em>Food</em></h2>
+                    <h2>Conform <em>Your Order</em></h2>
                 </div>
             </div>
         </div>
@@ -15,86 +15,106 @@
 </section>
 <!-- ***** Call to Action End ***** -->
 
-<section id="cart_foods">
-  <div class="container">
-      <div class="register-req">
-        <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-      </div><!--/register-req-->
-    <div class="shopper-informations">
-        <div class=" clearfix">
-          <div class="bill-to">
-              <h2 >Bill To</h2>
-          <div class="form-one">
-            <form>
-                         <label>Name</label>
-              <input type="text" placeholder="First Name *" value="<%= current_user.first_name %>">
-              <input type="text" placeholder="Middle Name *" value="<%= current_user.middle_name %>">
-              <input type="text" placeholder="Surname *" value="<%= current_user.last_name %>">
-                            <label>Contact</label>
-              <input type="text" placeholder="Email *" value="<%= current_user.email %>">
-              <input type="text" placeholder="Phone No *" value="<%= current_user.phone_no %>">
-            </form>
-          </div>
-          <div class="form-two">
-            <form>
-                          <label>Address</label>
-              <input type="text" placeholder="Address *" value="<%= current_user.address%>">
-              <input type="text" placeholder="Landmark *" value="<%= current_user.landmark%>">
-              <input type="text" placeholder="City *" value="<%= current_user.city%>">
-              <input type="text" placeholder="State *" value="<%= current_user.state%>">
-              <input type="text" placeholder="Country *" value="<%= current_user.country%>">
-              <input type="text" placeholder="Pin Code *" value="<%= current_user.pin_code%>">
-            </form>
-          </div>
+<section class="section">
+<div class="container">
+<%= form_with url: orders_path, method: 'post' do |form| %>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="contact-form">
+            <div class="row">
+            <div class="col-sm-12 col-xs-12">
+              <label>Email</label>
+              <input type="text" name="email" placeholder="Email *" value="<%= current_user.email %>">
+           </div>
+         </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                        <label>Address</label>
+                        <input type="text" name="address" placeholder="Address *" value="<%= current_user.address%>">
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                        <label>City</label>
+                        <input type="text"name="city" placeholder="City *" value="<%= current_user.city%>">
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                        <label>State</label>
+                        <input type="text" name="state" placeholder="State *" value="<%= current_user.state%>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                        <label>Phone No</label>
+                        <input type="text"name="phone_no" placeholder="Phone No *" value="<%= current_user.phone_no %>">
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                        <label>Country</label>
+                        <input type="text" name="country"placeholder="Country *" value="<%= current_user.country%>">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                    <label>Pin Code</label>
+                         <input type="text" name="pin_code" placeholder="Pin Code *" value="<%= current_user.pin_code%>">
+                    </div>
+                 </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="main-button">
+                                <div class="float-left"> 
+                                    <%= link_to "Back", checkouts_path%>
+                                </div>
+                                <div class="float-right">
+                                <%= link_to "finsh", orders_path%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
             </div>
+
+            <br>
+        </div>
+
+        <div class="col-md-4">
+        <% 
+        total_sum=0
+        @carts.each do |cart|
+            qty=cart.food.price * cart.quantity
+          total_sum += qty
+        end
+      %>
+     <li class="list-group-item" style="margin:0 0 -1px">
+          <div class="row">
+                        <div class="col-6">
+                            <h4><strong>Total</strong></h4>
+                        </div>
+
+                        <div class="col-6">
+                            <h4 class="text-right">Rs.<%= total_sum%></h4>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="list-group-item" style="margin:0 0 -1px">
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Sub-Total</strong>
+                        </div>
+
+                        <div class="col-6">
+                            <h5 class="text-right">Rs.<%= total_sum%></h5>
+                        </div>
+                    </div>
+     </li>
+            <br>
         </div>
     </div>
-    <br>
-    <div class="col-md-7">
-      <table class="table table-condensed total-result">
-            <% 
-            total_sum=0
-            @carts.each do |cart|
-                qty=cart.food.price * cart.quantity
-                total_sum += qty
-            end
-            %>
-              <li class="list-group-item" style="margin:0 0 -1px">
-                  <div class="row">
-                      <div class="col-6">
-                          <h4><strong>Total</strong></h4>
-                      </div>
-
-                      <div class="col-6">
-                          <h4 class="text-right">Rs.<%= total_sum%></h4>
-                      </div>
-                  </div>
-              </li>
-
-              <li class="list-group-item" style="margin:0 0 -1px">
-                  <div class="row">
-                      <div class="col-6">
-                          <strong>Sub-Total</strong>
-                      </div>
-
-                      <div class="col-6">
-                          <h5 class="text-right">Rs.<%= total_sum%></h5>
-                      </div>
-                  </div>
-              </li>
-      </table>
+  <% end %>
     </div>
-        <br>
-    <div class="payment-options">
-        <%= form_with url: orders_path, method: 'post' do |form| %>
-            <input type="hidden" name="user_id" value="<%= user.id %>">
-                 <button type="submit" class="btn btn-fefault cart">
-                     <i class=""></i> cash on delivery
-                </button>
-   <% end %>
-                <%#= link_to orders_path do  %>
-                    <%# <button type="submit" class="btn btn-fefault cart">cash on delivery</button> %>
-        <%#end %>
-    </div>
-  </div>
-</section> <!--/#cart_items-->
+</section>
