@@ -22,18 +22,18 @@ class OrdersController < ApplicationController
       sub_total += cart.food.price
     end
 
-@order = current_user.orders.new(
-  phone_no: params[:phone_no], email: params[:email], address: params[:address], 
-  landmark: params[:landmark], city: params[:city],
-  sub_total: sub_total, discount: params[:discount], total = sub_total - params[:discount].to_f
-)
-if @order.save
-  current_user.carts.each do |cart|
-    @order.order_food.create(
-      item_id: cart.food_id,
-      price: cart.food.price,
-      discount: cart.food.discount,
-    )
+  @order = current_user.orders.new(
+    phone_no: params[:phone_no], email: params[:email], address: params[:address], 
+    landmark: params[:landmark], city: params[:city],
+    sub_total: sub_total, discount: params[:discount], total = sub_total - params[:discount].to_f
+  )
+  if @order.save
+    current_user.carts.each do |cart|
+      @order.order_food.create(
+        item_id: cart.food_id,
+        price: cart.food.price,
+        discount: cart.food.discount,
+      )
   end
   
   current_user.carts.delete_all
