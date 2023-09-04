@@ -112,15 +112,15 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
         </div>
 
         <div class="col-md-4">
-        <% 
-        total_sum=0
-        @carts.each do |cart|
-            qty=cart.food.price * cart.quantity
-          total_sum += qty
-        end
-      %>
-     <li class="list-group-item" style="margin:0 0 -1px">
-          <div class="row">
+                <% 
+                total_sum=0
+                @carts.each do |cart|
+                    qty=cart.food.price * cart.quantity
+                total_sum += qty
+                end
+            %>
+              <li class="list-group-item" style="margin:0 0 -1px">
+                  <div class="row">
                         <div class="col-6">
                             <h4><strong>Total</strong></h4>
                         </div>
@@ -141,7 +141,7 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                             <h5 class="text-right">Rs.<%= total_sum%></h5>
                         </div>
                     </div>
-     </li>
+              </li>
             <br>
         </div>
     </div>

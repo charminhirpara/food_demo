@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   @order = current_user.orders.new(
     phone_no: params[:phone_no], email: params[:email], address: params[:address], 
     landmark: params[:landmark], city: params[:city],
-    sub_total: sub_total, discount: params[:discount], total = sub_total - params[:discount].to_f
+    sub_total: sub_total, discount: params[:discount], total: sub_total - params[:discount].to_f
   )
   if @order.save
     current_user.carts.each do |cart|
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
         price: cart.food.price,
         discount: cart.food.discount,
       )
-  end 
+  end
   
   current_user.carts.delete_all
   
