@@ -14,18 +14,18 @@ Rails.application.routes.draw do
 
   resources :orders, only: %i[index show]
   resources :checkouts, only: [:index]
-  
+
   get 'foods', to: 'foods#index'
-  
+
   resources :foods
-  resources :order_foods 
-  
+  resources :order_foods
+
   post '/carts', to: 'carts#create', as: :add_item
   get '/carts', to: 'carts#index'
   get '/carts/:id', to: 'carts#show'
   delete 'remove_item/carts/:id', to: 'carts#destroy', as: :remove_item
   get '/update', to: 'carts#increse_qty', as: :increse_qty
-  
+
   get '/profiles', to: 'profiles#index'
   patch '/profiles', to: 'profiles#update'
 end
