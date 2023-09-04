@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
         price: cart.food.price,
         discount: cart.food.discount,
       )
-  end
+  end 
   
   current_user.carts.delete_all
   
