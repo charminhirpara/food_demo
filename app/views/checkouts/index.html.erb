@@ -78,21 +78,21 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                     </div>
 
                     <div class="row">
-                    <div class="col-sm-6 col-xs-12">
-                    <label>Pin Code</label>
-                         <input type="text" name="pin_code" placeholder="Pin Code *" value="<%= current_user.pin_code%>">
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                    <label>Payment method</label>
+                        <div class="col-sm-6 col-xs-12">
+                        <label>Pin Code</label>
+                            <input type="text" name="pin_code" placeholder="Pin Code *" value="<%= current_user.pin_code%>">
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <label>Payment method</label>
 
-                    <select>
-                        <option value="">-- Choose --</option>
-                        <option value="bank">Bank account</option>
-                        <option value="cash">Cash</option>
-                        <option value="paypal">PayPal</option>
-                    </select>
+                            <select>
+                                <option value="">-- Choose --</option>
+                                <option value="bank">Bank account</option>
+                                <option value="cash">Cash</option>
+                                <option value="paypal">PayPal</option>
+                            </select>
+                        </div>
                     </div>
-                 </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="main-button">
@@ -100,7 +100,11 @@ style="background-image: url(<%= asset_path 'banner-image-1-1920x500.jpg' %>")
                                     <%= link_to "Back", carts_path%>
                                 </div>
                                 <div class="float-right">
-                                <%= link_to "finsh", orders_path%>
+                                <%= form_with url: orders_path, method: 'post' do |form| %>
+                                    <button type="submit" class="btn btn-fefault cart">
+                                        <i class="food-cart"></i>finsh
+                                    </button>
+                                <% end %>
                                 </div>
                             </div>
                         </div>

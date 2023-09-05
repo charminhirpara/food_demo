@@ -1,7 +1,6 @@
 #  frozen_string_literal: true
 
 #   :nodoc:
-
 class OrdersController < ApplicationController
   def index
     @orders = Order.all
@@ -24,22 +23,25 @@ class OrdersController < ApplicationController
     end
 
     @order = current_user.orders.new(
-      phone_no: params[:phone_no], email: params[:email], address: params[:address],
-      landmark: params[:landmark], city: params[:city],
-      sub_total:, discount: params[:discount], total: sub_total - params[:discount].to_f
+      phone_number: params[:phone_number], email: params[:email], address: params[:address],
+       city: params[:city],
+      sub_total:,total: sub_total.to_f
     )
     if @order.save
       current_user.carts.each do |cart|
-        @order.order_food.create(
-          item_id: cart.food_id,
+        @order.order_foods.create(
+          food_id: cart.food_id,
+          mrp: cart.food.mrp,
+          discount: cart.food.discount,
           price: cart.food.price,
-          discount: cart.food.discount
+          quantity: cart.quantity,
+          total: cart.food.price * cart.quantity
         )
       end
 
-      current_user.carts.delete_all
+      current_user.carts.destroy_all
 
-      OrderMailer.confirmation_email(order_id: @order.id).deliver_now
+      # OrderMailer.confirmation_email(order_id: @order.id).deliver_now
 
       redirect_to orders_path
     else
