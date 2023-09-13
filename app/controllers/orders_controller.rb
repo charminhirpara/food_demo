@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_food = current_user.orders.find(params[:id])
   end
 
   def create
@@ -43,7 +44,7 @@ class OrdersController < ApplicationController
 
       # OrderMailer.confirmation_email(order_id: @order.id).deliver_now
 
-      redirect_to orders_path
+      redirect_to order_path(@order)
     else
       redirect_to foods_path
     end

@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   post '/set-locale', to: 'homes#locales'
 
-  resources :orders
+  get '/orders', to: 'orders#index'
+  get '/orders/:id', to: 'orders#show', as: :order
+  post '/orders', to: 'orders#create'
 
   resources :checkouts, only: [:index]
   get 'foods', to: 'foods#index'

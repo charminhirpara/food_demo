@@ -52,13 +52,7 @@
       </div>
       <h3>Cash on Delivery</h3>
       <div class="col-md-12">
-      <% 
-        total_sum=0
-        @carts.each do |cart|
-            qty=cart.food.price * cart.quantity
-        total_sum += qty
-        end
-      %>
+      
     <li class="list-group-item" style="margin:0 0  1px">
         <div class="row">
               <div class="col-6">
@@ -66,7 +60,7 @@
               </div>
 
               <div class="col-6">
-                  <h4 class="text-right">Rs.<%= total_sum%></h4>
+                  <h4 class="text-right">Rs.<%= @order_food.total%></h4>
               </div>
           </div>
       </li>
@@ -78,13 +72,17 @@
               </div>
 
               <div class="col-6">
-                  <h5 class="text-right">Rs.<%= total_sum%></h5>
+                  <h5 class="text-right">Rs.<%=@order_food.total%></h5>
               </div>
           </div>
     </li>
-     <br>
+  <br>
+</div>
+    <%= link_to root_path do  %>
+        <button type="submit" class="btn btn-fefault cart">Home Page</button>
+  <%end %>
+      </div>
     </div>
-    </div>
-    <% end %>
+    <%end %>
     </div>
 </section> 
