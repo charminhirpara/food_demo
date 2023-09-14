@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
           total: cart.food.price * cart.quantity
         )
       end
-
+   
       current_user.carts.destroy_all
 
       # OrderMailer.confirmation_email(order_id: @order.id).deliver_now
